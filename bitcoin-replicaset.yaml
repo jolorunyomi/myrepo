@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: bitcoin
+  namespace: bitcoin
+  labels:
+    tier: bitcoin
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: bitcoin
+  template:
+    metadata:
+      labels:
+        tier: bitcoin
+    spec:
+      containers:
+      - name: bitcoin220
+        image: josepholorunyomi/bitcoin:22.0
