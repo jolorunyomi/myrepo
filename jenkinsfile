@@ -12,7 +12,7 @@ pipeline{
        stage('build image')
         {
             steps{
-                sh 'docker build -t bitcoin:22.0 .'  docker build --rm -f Dockerfile -t josepholorunyomi/bitcoin:22.0 .
+                sh 'docker build -t bitcoin:22.0 .' 
             }
         } 
         stage('pushing to dockerhub')
