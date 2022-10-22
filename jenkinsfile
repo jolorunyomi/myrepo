@@ -6,9 +6,20 @@ pipeline{
         
     }
     stages{
+      stage('Checkout') {
+      steps {
+        script {
+           // The below will clone your repo and will be checked out to master branch by default.
+           git credentialsId: 'github', url: 'https://github.com/jolorunyomi/myrepo.git'
+           // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
+           sh "ls -lart ./*" 
+          }
+       }
+    }
        stage('build image')
         {
             steps{
+                sh ' cd ./myrepo'
                 sh 'docker build -t  bitcoin:22.0 . ' 
             }
         } 
